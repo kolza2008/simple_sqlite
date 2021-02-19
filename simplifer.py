@@ -8,8 +8,8 @@ class AdvancedDispatcher:
     def write(self, func):
         "Decorator for create methods for edit or write to sqlite database"
         #print('Database method decorated')
-        def db_function():
-            data = func()
+        def db_function(*args):
+            data = func(*args)
             self.cur.execute(data)
             self.conn.commit()
         return db_function
@@ -17,8 +17,8 @@ class AdvancedDispatcher:
     def read(self, func):
         "Decorator for create methods for read data from sqlite database"
         #print('Database method decorated')
-        def db_function():
-            data = func()
+        def db_function(*args):
+            data = func(*args)
             cur.execute(data)
         return db_function
 
