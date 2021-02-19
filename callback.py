@@ -1,12 +1,11 @@
-def callback(callback_func):
-    def callback_decor(main_func):
-        def callback_func():
-            main_func()
-            callback_func()
-        return callback_func
-    return callback_decor
+import time
 
-def save_callback(callback_func):
+callbacks = {}
+
+def callback_help(callback_func):
+    return lambda x: callback_func()
+
+def callback(callback_func):
     def save_callback_decor(main_func):
         def save_callback_func():
             average = main_func()

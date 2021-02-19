@@ -12,7 +12,6 @@ class AdvancedDispatcher:
             data = func()
             self.cur.execute(data)
             self.conn.commit()
-            print('Executed database method')
         return db_function
 
     def read(self, func):
@@ -33,8 +32,8 @@ class AdvancedDispatcher:
     
     def start(self):
         "Method that starts all init methods"
-        try:
-            for i in self.inits:
+        for i in self.inits:
+            try:
                 i()
-        except:
-            pass
+            except:
+                pass
