@@ -5,9 +5,9 @@ class AdvancedDispatcher:
         self.conn = con
         self.cur = cur
         
-        self.inits = [] #list with init methods
+        self.inits: List[Callable[..., Any]] = [] #list with init methods
 
-    def write(self, func: Callable[..., str]) -> Callable[..., str]:
+    def write(self, func: Callable[..., str]) -> Callable[..., None]:
         "Decorator for create methods for edit or write to sqlite database"
         #print('Database method decorated')
         def db_function(**args):
@@ -16,7 +16,7 @@ class AdvancedDispatcher:
             self.conn.commit()
         return db_function
 
-    def read(self, func: Callable[..., str]) -> Callable[..., str]:
+    def read(self, func: Callable[..., str]) -> Callable[..., Any]:
         "Decorator for create methods for read data from sqlite database"
         #print('Database method decorated')
         def db_function(*args):
