@@ -63,3 +63,13 @@ def process_book(data):
 def get_first_letter_of_book(id):
   return 'SELECT * FROM books WHERE id = '+str(id)
 ```
+
+## How to write database methods correctly
+First, you must write decorators in right order
+```
+@callback_method
+@init_method
+@behavior_method #@disp.read or @disp.write
+@logger_method
+def db_method()
+```
