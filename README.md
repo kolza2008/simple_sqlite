@@ -64,6 +64,20 @@ def get_first_letter_of_book(id):
   return 'SELECT * FROM books WHERE id = '+str(id)
 ```
 
+## Help your requests
+In module **simple_sqlite.helper** there is method *new_table(...)*.
+With its help, we can create request for create new table. First parameter is
+name of your table, second parameter is list of columns. Each column is list where
+first element is name of column and second element is type of column *(str, int, bytes)*
+```
+@disp.init
+@disp.write
+def init_books():
+  global books
+  books = new_table('books', ((name', str), ('year_of_created', int))
+  return books
+```
+
 ## How to write database methods correctly
 First, you must write decorators in right order
 ```
