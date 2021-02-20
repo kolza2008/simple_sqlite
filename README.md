@@ -49,3 +49,17 @@ To start initial methods, you must run method *AdvancedDispatcher.start*
 ```
 disp.start()
 ```
+
+## A series of a function
+With help from module **simple_sqlite.callback**, you can create 
+series of linked functions. This is necessary when you want get data and
+process it. To create callback, must use decorator *callback*
+```
+def process_book(data):
+  return data[0][1]][0]
+  
+@callback(process_book)
+@disp.read
+def get_first_letter_of_book(id):
+  return 'SELECT * FROM books WHERE id = '+str(id)
+```
