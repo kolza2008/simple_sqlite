@@ -1,3 +1,5 @@
+from typing import Any, Callable, Type, TypeVar
+
 class AdvancedDispatcher:
     def __init__(self, con, cur):
         self.conn = con
@@ -5,7 +7,7 @@ class AdvancedDispatcher:
         
         self.inits = [] #list with init methods
 
-    def write(self, func):
+    def write(self, func: Callable[..., str]) -> Callable[..., str]:
         "Decorator for create methods for edit or write to sqlite database"
         #print('Database method decorated')
         def db_function(**args):
@@ -14,7 +16,7 @@ class AdvancedDispatcher:
             self.conn.commit()
         return db_function
 
-    def read(self, func):
+    def read(self, func: Callable[..., str]) -> Callable[..., str]:
         "Decorator for create methods for read data from sqlite database"
         #print('Database method decorated')
         def db_function(*args):
@@ -22,15 +24,13 @@ class AdvancedDispatcher:
             cur.execute(data)
         return db_function
 
-    def init(self, func):
+    def init(self, func: Callable[..., str]) -> Callable[..., str]:
         "Decorator for register init methods"
         #print('New init method')
         self.inits.append(func)
-        def db_function():
-            func()
-        return db_function
+        return func
     
-    def start(self):
+    def start(self) -> None:
         "Method that starts all init methods"
         for i in self.inits:
             try:

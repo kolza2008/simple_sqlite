@@ -8,7 +8,7 @@ class Table:
 
 def new_table(table:str, columns: str):
     values = f'id INTEGER PRIMARY KEY AUTOINCREMENT, {columns}'
-    return Table(name=table, columns=values, request=f'CREATE TABLE {table} ({values})')
+    return Table(name=table, columns=columns, request=f'CREATE TABLE {table} ({values})')
 
 def create(table: Table, values: str):
     return f'INSERT INTO {table.name} ({table.columns}) VALUES ({values})'

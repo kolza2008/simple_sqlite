@@ -1,11 +1,11 @@
-import time
+import time.
 
 callbacks = {}
 
 def callback_help(callback_func):
     return lambda x: callback_func()
 
-def callback(callback_func):
+def callback(callback_func: Callable[..., None]) ->  -> Callable[..., None]:
     def save_callback_decor(main_func):
         def save_callback_func(**args):
             average = main_func(**args)
