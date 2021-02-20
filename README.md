@@ -71,5 +71,6 @@ First, you must write decorators in right order
 @init_method
 @behavior_method #@disp.read or @disp.write
 @logger_method
-def db_method()
+def db_method():
+  pass
 ```
