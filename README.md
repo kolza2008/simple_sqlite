@@ -10,4 +10,12 @@ use **simple_sqlite.helper**.
 
 ## Simplify your database
 You can simplify work with database with module
-**simple_sqlite.simplifer**. 
+**simple_sqlite.simplifer**. To get started work with it, 
+you need init class *AdvancedDispatcher*.
+```
+import sqlite3 
+import simple_sqlite.simplifer as disp
+conn = sqlite3.connect('db.db')
+cur = conn.cursor()
+disp = disp.AdvancedDispatcher(conn, cur)
+```
